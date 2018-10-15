@@ -26,28 +26,28 @@ def puppiesFunction():
   elif request.method == 'POST':
     #Call the method to make a new puppy
     print "Making a New puppy"
-    
+
     name = request.args.get('name', '')
     description = request.args.get('description', '')
     print name
     print description
     return makeANewPuppy(name, description)
- 
-  
- 
+
+
+
 #Make another app.route() decorator here that takes in an integer id in the URI
 @app.route("/puppies/<int:id>", methods = ['GET', 'PUT', 'DELETE'])
 #Call the method to view a specific puppy
 def puppiesFunctionId(id):
   if request.method == 'GET':
     return getPuppy(id)
-    
+
 #Call the method to edit a specific puppy  
   elif request.method == 'PUT':
     name = request.args.get('name', '')
     description = request.args.get('description', '')
     return updatePuppy(id,name, description)
-    
+
  #Call the method to remove a puppy 
   elif request.method == 'DELETE':
     return deletePuppy(id)
@@ -58,8 +58,8 @@ def getAllPuppies():
 
 def getPuppy(id):
   puppy = session.query(Puppy).filter_by(id = id).one()
-  return jsonify(puppy=puppy.serialize) 
-  
+  return jsonify(puppy=puppy.serialize)
+
 def makeANewPuppy(name,description):
   puppy = Puppy(name = name, description = description)
   session.add(puppy)
