@@ -7,9 +7,9 @@ import codecs
 sys.stdout = codecs.getwriter('utf8')(sys.stdout)
 sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 
-foursquare_client_id = 'SMQNYZFVCIOYIRAIXND2D5SYBLQUOPDB4HZTV13TT22AGACD'
-foursquare_client_secret = 'IHBS4VBHYWJL53NLIY2HSVI5A1144GJ3MDTYYY1KLKTMC4BV'
-google_api_key = 'AIzaSyBz7r2Kz6x7wO1zV9_O5Rcxmt8NahJ6kos'
+foursquare_client_id = ''
+foursquare_client_secret = ''
+google_api_key = ''
 
 def getGeocodeLocation(inputString):
     #Replace Spaces with '+' in URL
@@ -39,7 +39,7 @@ def findARestaurant(mealType, location):
         for i in restaurant_address:
             address += i + " "
         restaurant_address = address
-        
+
         #Get a  300x300 picture of the restaurant using the venue_id (you can change this by altering the 300x300 value in the URL or replacing it with 'orginal' to get the original picture
         url = ('https://api.foursquare.com/v2/venues/%s/photos?client_id=%s&v=20150603&client_secret=%s' % ((venue_id,foursquare_client_id,foursquare_client_secret)))
         result = json.loads(h.request(url,'GET')[1])
